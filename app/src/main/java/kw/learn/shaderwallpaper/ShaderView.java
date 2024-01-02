@@ -51,4 +51,8 @@ public class ShaderView extends GLSurfaceView {
         setRenderer(renderer);
         setRenderMode(renderMode);
     }
+
+    public ShaderRenderer getRenderer() {
+        return renderer;
+    }
 }

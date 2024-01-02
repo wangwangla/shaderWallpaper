@@ -5,6 +5,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.TargetApi;
+import android.app.WallpaperManager;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -36,17 +39,16 @@ public class MainActivity extends AppCompatActivity {
         return height;
     }
 
-    /*
-    *
+    public void setWallpaper(View view) {
+//        Intent intent = new Intent(Intent.ACTION_SET_WALLPAPER);
+//        intent.setClassName(
+//                "com.android.wallpaper.livepicker",
+//                "com.android.wallpaper.livepicker.LiveWallpaperActivity");
+//        startActivity(intent);
 
-    * */
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-//        if (hasFocus) {
-//            hideSystemUI();
-//        }
+        Intent wallpaperIntent = new Intent(WallpaperManager.ACTION_CHANGE_LIVE_WALLPAPER);
+        ComponentName wallpaperComponent = new ComponentName(this, ShaderWallpaperService.class);
+        wallpaperIntent.putExtra(WallpaperManager.EXTRA_LIVE_WALLPAPER_COMPONENT, wallpaperComponent);
+        startActivity(wallpaperIntent);
     }
-
 }
